@@ -41,6 +41,10 @@ def main():
         else:
             st.warning("Please upload an image.")
 
+    from ultralytics.nn.tasks import DetectionModel
+    import torch.serialization
+
+    torch.serialization.add_safe_globals([DetectionModel])
     model = YOLO('best.pt')
 
     if st.sidebar.button('Detect Objects'):
